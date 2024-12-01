@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karya Tani</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: white;
+            color: black;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        header img {
+            height: 40px;
+        }
+
+        header h1 {
+            font-size: 1.2em;
+            margin: 0;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+
+        .product-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            padding: 80px 10px 20px;
+        }
+
+        .product {
+            background-color: #f5f5f5;
+            color: black;
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .product img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .product h2 {
+            font-size: 0.9em;
+            margin: 8px 0;
+        }
+
+        .product p {
+            font-size: 0.8em;
+            margin: 5px 0;
+        }
+
+        .product .price {
+            font-size: 0.8em;
+            font-weight: bold;
+            margin: 5px 0;
+            color: #258d7e;
+        }
+
+        .product a {
+            display: inline-block;
+            text-decoration: none;
+            color: white;
+            background-color: #258d7e;
+            padding: 6px 12px;
+            border-radius: 5px;
+            font-size: 0.8em;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        .form-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .form-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .form-container button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #258d7e;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .navbar-menu {
+            display: none;
+            position: absolute;
+            top: 50px;
+            right: 15px;
+            background-color: #FFFFFF;
+            border-radius: 5px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            width: 150px;
+            text-align:left;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: all 0.3s ease;
+            font-family: 'Georgia';
+            font-weight: 700; /* Bold */
+            margin-left: 300px;
+        }
+
+        /* Menu aktif */
+        .navbar-menu.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Animasi Hover pada Menu */
+        .navbar-menu ul li a {
+            text-decoration: none;
+            color: black;
+            display: block;
+            padding: 8px 10px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .navbar-menu ul li a:hover {
+            background-color: #ccc;
+            transform: translateX(5px); /* Efek geser saat hover */
+        }
+
+        /* Garis Pembatas untuk Menu */
+        .navbar-menu ul li {
+            border-bottom: 1px solid black; /* Garis di bawah setiap teks */
+            padding: 1px 0;
+            margin-left:-15px;
+        }
+
+        .menu-icon {
+            display: block;
+            cursor: pointer;
+            width: 25px;
+            height: 25px;
+            margin-left: 300px;
+        }
+
+        .menu-icon span {
+            display: block;
+            background-color: black;
+            height: 3px;
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <header>
+      
+          <div class="menu-icon" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <!-- Menu Navbar -->
+    <div class="navbar-menu">
+        <ul>
+            <li><a href="#home">Tentang</a></li>
+            <li><a href="#about">Galeri</a></li>
+            <li><a href="#facility">Sertifikat</a></li>
+            <li><a href="https://maps.app.goo.gl/ffLsPEs9R7aduGxx7" target="_blank">Lokasi</a></li>
+
+        </ul>
+    </div>
+    
+        <div style="display: flex; align-items: center;">
+            <div style="width: 40px; height: 40px; background-color: green; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin-left:-365px;">
+                <span style="color: white; font-weight: bold;">KT</span>
+            </div>
+            <h1 style="margin-left: 10px;">Karya Tani</h1>
+        </div>
+    </header>
+    
+
+    <!-- Menu Hamburger -->
+
+
+    <div class="product-container" id="product-container">
+        <!-- Produk ditambahkan menggunakan JavaScript -->
+    </div>
+    
+<div class="overlay" id="overlay">
+    <div class="form-container">
+        <h3>Form Pesanan</h3>
+        <input type="text" id="name" placeholder="Nama Pemesan">
+        <input type="number" id="quantity" placeholder="Jumlah Pesanan">
+        <div style="display: flex; gap: 10px; justify-content: center;">
+            <button onclick="confirmOrder()">Konfirmasi</button>
+            <button onclick="cancelOrder()" style="background-color: red;">Batal</button>
+        </div>
+    </div>
+</div>
+
+
+    
+
+    <script>
+        // Toggle untuk membuka dan menutup menu hamburger
+        function toggleMenu() {
+            const menu = document.querySelector('.navbar-menu');
+            const hamburgerIcon = document.querySelector('.menu-icon');
+            menu.classList.toggle('active'); // Menampilkan menu
+        }
+
+        const overlay = document.getElementById('overlay');
+        const productContainer = document.getElementById('product-container');
+        let currentProduct = '';
+
+        function openForm(product) {
+            currentProduct = product;
+            overlay.style.display = 'flex';
+        }
+        
+        function cancelOrder() {
+    overlay.style.display = 'none';
+    document.getElementById('name').value = '';
+    document.getElementById('quantity').value = '';
+    currentProduct = ''; // Reset produk yang dipilih
+}
+
+function openForm(product) {
+    currentProduct = product;
+    overlay.style.display = 'flex';
+    document.getElementById('name').value = '';
+    document.getElementById('quantity').value = '';
+}
+
+
+
+        function confirmOrder() {
+            const name = document.getElementById('name').value;
+            const quantity = document.getElementById('quantity').value;
+            if (name && quantity) {
+                const url = `https://wa.me/6285294964110?text=Halo,%20saya%20${name},%20ingin%20memesan%20${currentProduct}%20sebanyak%20${quantity}`;
+                window.open(url, '_blank');
+                overlay.style.display = 'none';
+            } else {
+                alert('Harap isi semua kolom!');
+            }
+        }
+
+        const products = [
+            { name: "Produk 1", price: "Rp 50.000", description: "Deskripsi singkat produk 1." },
+            { name: "Produk 2", price: "Rp 75.000", description: "Deskripsi singkat produk 2." },
+            { name: "Produk 3", price: "Rp 100.000", description: "Deskripsi singkat produk 3." },
+            { name: "Produk 4", price: "Rp 120.000", description: "Deskripsi singkat produk 4." },
+            { name: "Produk 5", price: "Rp 150.000", description: "Deskripsi singkat produk 5." },
+            { name: "Produk 6", price: "Rp 80.000", description: "Deskripsi singkat produk 6." },
+            { name: "Produk 7", price: "Rp 90.000", description: "Deskripsi singkat produk 7." },
+            { name: "Produk 8", price: "Rp 110.000", description: "Deskripsi singkat produk 8." },
+            { name: "Produk 9", price: "Rp 200.000", description: "Deskripsi singkat produk 9." },
+            { name: "Produk 10", price: "Rp 300.000", description: "Deskripsi singkat produk 10." }
+        ];
+
+        products.forEach(product => {
+            productContainer.innerHTML += `
+                <div class="product">
+                    <img src="https://via.placeholder.com/150" alt="${product.name}">
+                    <h2>${product.name}</h2>
+                    <p>${product.description}</p>
+                    <p class="price">${product.price}</p>
+                    <a href="#" onclick="openForm('${product.name}')">Beli Sekarang</a>
+                </div>
+            `;
+        });
+    </script>
+</body>
+</html>
